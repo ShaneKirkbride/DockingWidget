@@ -214,8 +214,40 @@ app {
         display: none;
     }
 
-    .sidebar .collapse {
+.sidebar .collapse {
         /* Never collapse the sidebar for wide screens */
         display: block;
     }
+}
+
+/* Dock layout styles */
+.dock-layout {
+    display: grid;
+    grid-template-areas:
+        "top top top"
+        "left center right"
+        "bottom bottom bottom";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 80px 1fr 80px;
+    gap: 10px;
+}
+
+.dock-layout .top { grid-area: top; }
+.dock-layout .bottom { grid-area: bottom; }
+.dock-layout .left { grid-area: left; }
+.dock-layout .right { grid-area: right; }
+.dock-layout .center { grid-area: center; }
+
+.dock-zone {
+    border: 1px dashed #75868a;
+    min-height: 60px;
+    padding: 5px;
+}
+
+.dock-panel {
+    background: #5c6b7f;
+    color: #fff;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: grab;
 }
