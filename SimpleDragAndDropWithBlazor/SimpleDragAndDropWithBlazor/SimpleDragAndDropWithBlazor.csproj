@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>DockingWidget</RootNamespace>
+    <AssemblyName>DockingWidget</AssemblyName>
   </PropertyGroup>
 
 </Project>

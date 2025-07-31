@@ -115,7 +115,7 @@ app {
     color: red;
 }
 
-/** Simple drag and drop with Blazor CSS **/
+/** Docking Widget CSS **/
 
 .jobs-container {
     display: flex;
