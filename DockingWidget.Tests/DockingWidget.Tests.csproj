@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DockingWidget\DockingWidget\SimpleDragAndDropWithBlazor.csproj" />
+    <ProjectReference Include="..\DockingWidget\DockingWidget\DockingWidget.csproj" />
   </ItemGroup>
 
 </Project>

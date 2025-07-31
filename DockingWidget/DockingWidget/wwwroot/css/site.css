@@ -248,6 +248,6 @@ app {
     background: #3d82c8;
     color: #fff;
     padding: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 0;
     cursor: grab;
 }
