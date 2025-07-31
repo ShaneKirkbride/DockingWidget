@@ -1,6 +1,11 @@
 @using DockingWidget.Docking
 
-<div class="dock-zone" @ondrop="HandleDrop" @ondragover:preventDefault="true">
+<div class="dock-zone @dropClass"
+     ondragover="event.preventDefault();"
+     ondragstart="event.dataTransfer.setData('', event.target.id);"
+     @ondrop="HandleDrop"
+     @ondragenter="HandleDragEnter"
+     @ondragleave="HandleDragLeave">
     @foreach (var panel in Panels)
     {
         <DockPanel Panel="panel" />
@@ -12,13 +17,29 @@
     [Parameter] public DockZoneType Zone { get; set; }
 
     private IEnumerable<PanelModel> Panels => Layout.Service.GetPanels(Zone);
+    private string dropClass = string.Empty;
+
+    private void HandleDragEnter()
+    {
+        if (Layout.DraggedPanel == null) return;
+        if (Layout.DraggedPanel.Zone == Zone) return;
+
+        dropClass = "can-drop";
+    }
+
+    private void HandleDragLeave()
+    {
+        dropClass = string.Empty;
+    }
 
     private void HandleDrop()
     {
+        dropClass = string.Empty;
         if (Layout.DraggedPanel != null)
         {
             Layout.Service.MovePanel(Layout.DraggedPanel, Zone);
             Layout.DraggedPanel = null;
+            StateHasChanged();
         }
     }
 }
