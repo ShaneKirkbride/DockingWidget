@@ -21,7 +21,8 @@ namespace DockingWidget
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddServerSideBlazor(config => {
+            services.AddServerSideBlazor(config =>
+            {
                 config.DetailedErrors = true;
             });
             services.AddSingleton<IDockService, DockService>();
