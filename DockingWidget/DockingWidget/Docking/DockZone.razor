@@ -1,0 +1,24 @@
+@using DockingWidget.Docking
+
+<div class="dock-zone" @ondrop="HandleDrop" @ondragover:preventDefault="true">
+    @foreach (var panel in Panels)
+    {
+        <DockPanel Panel="panel" />
+    }
+</div>
+
+@code {
+    [CascadingParameter] public DockLayout Layout { get; set; }
+    [Parameter] public DockZoneType Zone { get; set; }
+
+    private IEnumerable<PanelModel> Panels => Layout.Service.GetPanels(Zone);
+
+    private void HandleDrop()
+    {
+        if (Layout.DraggedPanel != null)
+        {
+            Layout.Service.MovePanel(Layout.DraggedPanel, Zone);
+            Layout.DraggedPanel = null;
+        }
+    }
+}

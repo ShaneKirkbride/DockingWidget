@@ -1,0 +1,17 @@
+@using DockingWidget.Docking
+@inject IDockService DockService
+
+<CascadingValue Value="this">
+    <div class="dock-layout">
+        <div class="top"><DockZone Zone="DockZoneType.Top" /></div>
+        <div class="left"><DockZone Zone="DockZoneType.Left" /></div>
+        <div class="center"><DockZone Zone="DockZoneType.Center" /></div>
+        <div class="right"><DockZone Zone="DockZoneType.Right" /></div>
+        <div class="bottom"><DockZone Zone="DockZoneType.Bottom" /></div>
+    </div>
+</CascadingValue>
+
+@code {
+    public PanelModel DraggedPanel { get; set; }
+    public IDockService Service => DockService;
+}

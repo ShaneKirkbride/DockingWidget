@@ -1,0 +1,16 @@
+@inherits LayoutComponentBase
+@using DockingWidget.Docking
+
+<div class="dock-panel" draggable="true" @ondragstart="OnDragStart">
+    <h5>@Panel.Title</h5>
+</div>
+
+@code {
+    [CascadingParameter] public DockLayout Layout { get; set; }
+    [Parameter] public PanelModel Panel { get; set; }
+
+    private void OnDragStart()
+    {
+        Layout.DraggedPanel = Panel;
+    }
+}
